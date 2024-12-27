@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Project.Models.Item>
+@{
+	ViewData["Title"] = "Items";
+}
+
+@foreach (var categoryGroup in Model.GroupBy(i => i.Category.Name))
+{
+	<section class="product" id="@categoryGroup.Key.Replace(" ", "-")">
+		<div class="container">
+			<button class="left-btn"><i class="fa-solid fa-angle-left fa-lg"></i></button>
+			<button class="right-btn"><i class="fa-solid fa-angle-right fa-lg"></i></button>
+			<h3 class="product-category">@categoryGroup.Key</h3>
+			<div class="product-content swiper">
+				<div class="swiper-wrapper">
+					@foreach (var item in categoryGroup)
+					{
+						<div class="product-card swiper-slide">
+							<a asp-action="Product" asp-controller="Items" asp-route-Id="@item.Id">
+								<div class="product-image">
+									<span class="card-tag"><i class="fa-regular fa-heart"></i></span>
+									<img src="@item.imageSrc" />
+								</div>
+								<div class="product-info">
+
+									<p class="name">@item.Name</p>
+									<span class="price">$@item.Price</span>
+								</div>
+							</a>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+}

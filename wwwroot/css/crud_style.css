@@ -1,0 +1,199 @@
+/* Start Variables */
+:root {
+    --main-color: #ce1212;
+    --input-color: #fafafa;
+    --input-text-color: #666;
+    --border-section: #ddd;
+}
+/* End Variables */
+
+/* Start Items View */
+.items-index {
+    padding: 40px 0;
+}
+.items-index .container {
+    display: flex;
+    flex-direction: column;
+}
+.items-index .items-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.items-index .items-head a {
+    background-color: var(--main-color);
+    padding: 15px 18px;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+.items-index .items-head a i {
+    margin-right: 10px;
+    font-size: 13px;
+    opacity: .9;
+}
+.items-index .items-head a:hover {
+    opacity: .8;
+}
+.items-index .items-head h2 {
+    font-size: 28px;
+}
+.items-index .items-table {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 14px;
+    padding: 5px 10px;
+    color: var(--input-text-color);
+}
+.items-index .items-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.items-index .item-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #ddd;
+    padding: 10px 20px;
+    position: relative;
+}
+.items-index .item-info .go-to {
+    position: absolute;
+    top: 10px; 
+    left: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--input-text-color);
+}.items-index .item-info .go-to:hover {
+     color: var(--main-color);
+ } 
+.items-index .item-info .item-price {
+    color: var(--main-color);
+}
+.items-index .item-info .item-desc {
+    flex-basis: 41px;
+    text-transform: capitalize;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.items-index .item-info .item-name {
+    font-weight: 600;
+    width: 200px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.items-index .item-image {
+    width: 40px;
+    height: 80px;
+}
+.items-index .item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.items-index .edit-remove {
+    display: flex;
+    gap: 20px;
+}
+.items-index .edit-remove a {
+    display: block;
+    font-size: 16px;
+}
+.items-index .edit-remove a:hover i {
+    color: var(--main-color);
+}
+.items-index .edit-remove .trash i {
+    color: black;
+}
+.items-index .edit-remove .edit i {
+    color: teal;
+}
+/* End Item View */
+
+/* Start Item View Mobile */
+@media (max-width: 620px) {
+    .items-index .item-info .item-name {
+        font-size: 14px;
+        width: 70px;
+    }
+    .items-index .item-info .item-price {
+        font-size: 14px;
+    }
+    .items-index .item-info .item-desc {
+        display: none;
+    }
+    .items-index .item-info .category-name {
+        font-size: 14px;
+    }
+    .items-index .edit-remove {
+        gap: 10px;
+    }
+    .items-index .edit-remove a {
+        font-size: 14px;
+    }
+}
+/* End Item View Mobile */
+
+/* Strt Create-Delete Item */
+.create-item {
+    padding: 40px 0 !important;
+}
+.create-item .nav-head .active {
+    font-size: 24px;
+    border: none !important;
+    margin-bottom: 30px;
+    color: #bc0d0d !important;
+    font-weight: 600;
+}
+.create-item .form-content {
+    border-top: 1px solid #ddd;
+}
+.create-item ::-webkit-file-upload-button {
+    border-color: #c1c1c172;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    outline: none;
+}
+.create-item ::placeholder {
+    text-align: center;
+    word-spacing: 6px;
+}
+/* End Create-Delete Item */
+
+/* All Textarea */
+.login-content form .input textarea {
+    padding: 14px 10px;
+    font-size: 13px;
+    color: #666;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+    width: 100%;
+    height: 80px;
+    resize: vertical;
+    line-height: 20px;
+}
+
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
+}

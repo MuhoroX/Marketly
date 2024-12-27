@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Project.Models.Item>
+
+@{
+	ViewData["Title"] = "Search";
+}
+
+@if (!Model.Any())
+{
+	<div class="not-found">
+		<div class="container">
+			<h4>No Items Found. <i class="fa-regular fa-face-sad-tear"></i></h4>
+		</div>
+	</div>
+}
+else
+{
+	<div class="search-pg">
+		<div class="container">
+			<div class="head-search">
+				<h2> @ViewBag.Message</h2>
+			</div>
+			<div class="search-content">
+				@foreach (var item in Model)
+				{
+					<div class="product-card">
+						<a asp-action="Product" asp-controller="Items" asp-route-Id="@item.Id">
+							<div class="product-image">
+								<span class="card-tag"><i class="fa-regular fa-heart"></i></span>
+								<img src="@item.imageSrc" />
+							</div>
+							<div class="product-info">
+								<p class="name">@item.Name</p>
+								<span class="price">$@item.Price</span>
+							</div>
+						</a>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+}

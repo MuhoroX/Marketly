@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Project.Models.Item>
+@{
+	ViewData["Title"] = "Items View";
+}
+
+<div class="items-index">
+	<div class="container">
+		<div class="items-head">
+			<h2>Items View</h2>
+			<a asp-action="Create" asp-controller="Items"><i class="fa-solid fa-plus"></i> Add New Item</a>
+		</div>
+		@* <div class="items-table"> *@
+		@* 	<p>Item Name</p> *@
+		@* 	<p>Item Price</p> *@
+		@* 	<p>Description</p> *@
+		@* </div> *@
+		<div class="items-content">
+			@foreach (var item in Model)
+			{
+				<div class="item-info">
+					<a asp-action="Product" asp-controller="Items" asp-route-Id="@item.Id" class="go-to">Show Product</a>
+					<p class="item-name">@item.Name</p>
+					<p class="item-price">$@item.Price</p>
+					<p class="item-desc">@item.Description</p>
+					<p class="category-name">@item.Category.Name</p>
+					<div class="item-image"><img src="@item.imageSrc"/></div>
+					<div class="edit-remove">
+						<a asp-action="Delete" asp-controller="Items" asp-route-Id="@item.Id" class="trash">
+							<i class="fa-solid fa-trash-can"></i>
+						</a>
+						<a asp-action="Edit" asp-controller="Items" asp-route-Id="@item.Id" class="edit">
+							<i class="fa-regular fa-pen-to-square"></i>
+						</a>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>

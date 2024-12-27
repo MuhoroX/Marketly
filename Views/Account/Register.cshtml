@@ -1,0 +1,63 @@
+﻿@using Project.ViewModels;
+@model RegisterViewModel;
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<section class="login-register">
+	<div class="container">
+		<div class="content">
+			<div class="welcome-text">
+				<h2>Hello,</h2>
+				<h3>Log in to Marketly or create an account, don't miss the discounts!</h3>
+			</div>
+			<div class="nav-head">
+				<button class="@(ViewData["ActivePage"]?.ToString() == "Login" ? "active" : "n-active")" onclick="window.location='@Url.Action("Login", "Account")'">
+					Log In
+				</button>
+				<button class="@(ViewData["ActivePage"]?.ToString() == "Register" ? "active" : "n-active")" onclick="window.location='@Url.Action("Register", "Account")'">
+					Sign Up
+				</button>
+			</div>
+			<div class="login-content">
+				<div class="form-content">
+                    <form asp-action="Register" method="post">
+						<div asp-validation-summary="ModelOnly" class="text-denger summary">
+							<i class="fa-solid fa-circle-exclamation"></i>
+						</div>
+                        <div class="input">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name"/>
+                        </div>
+						<div class="input">
+							<label asp-for="Email">Email address</label>
+							<input type="email" asp-for="Email" />
+							<span asp-validation-for="Email" class="text-denger"></span>
+						</div>
+						<div class="input">
+							<label asp-for="Password"></label>
+							<input asp-for="Password" />
+							<span asp-validation-for="Password" class="text-denger"></span>
+						</div>
+                        <div class="input">
+                            <label asp-for="ConfirmPassword" ></label>
+                            <input asp-for="ConfirmPassword" />
+							<span asp-validation-for="ConfirmPassword" class="text-denger"></span>
+
+                        </div>
+						<div class="login-btn">
+							<input type="submit" value="Sign Up" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

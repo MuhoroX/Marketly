@@ -1,0 +1,33 @@
+﻿@{
+	ViewData["Title"] = "Product";
+}
+<div class="product-detial">
+	<div class="container">
+		<div class="product-image-container">
+			<div class="product-image">
+				<img src="@Model.imageSrc" />
+			</div>
+		</div>
+		<div class="product-info">
+			<h3 class="name">@Model.Name</h3>
+			<div class="to-cart">
+				<span class="price">$@Model.Price</span>
+				<div class="cart-btn">
+					<input type="number" id="quantity" value="1" min="1" max="16"/>
+					<a href="#" id="addToCartBtn" data-itemid="@Model.Id">Add To Cart</a>
+				</div>
+			</div>
+			<span class="description">@Model.Description</span>
+		</div>
+	</div>
+</div>
+
+<script>
+	document.getElementById('addToCartBtn').addEventListener('click', function (e) {
+		e.preventDefault();
+		var quantity = document.getElementById('quantity').value;
+		var itemId = this.getAttribute('data-itemid');
+
+		window.location.href = '/Items/AddToCart?itemId=' + itemId + '&quantity=' + quantity;
+	});
+</script>

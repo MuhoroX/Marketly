@@ -1,0 +1,62 @@
+﻿@model Project.Models.Item
+@{
+    ViewData["Title"] = "Edit Item";
+}
+
+<section class="login-register create-item">
+    <div class="container">
+        <div class="content">
+            <div class="nav-head">
+                <button class="active">
+                    Edit Item
+                </button>
+            </div>
+            <div class="login-content">
+                <div class="form-content">
+                    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-denger summary">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+                        <div class="input">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" />
+                        </div>
+                        <div class="input">
+                            <label asp-for="Price"></label>
+                            <input asp-for="Price" />
+                        </div>
+                        <div class="input">
+                            <label asp-for="Description"></label>
+                            <textarea asp-for="Description" rows="5" cols="50"></textarea>
+                        </div>
+                        <div class="input">
+                            <label asp-for="CategoryId">Category Id</label>
+                            <input asp-for="CategoryId" placeholder="[1]Laptops  [2]Computers  [3]Mobiles" min="1" max="3" />
+                        </div>
+                        <div class="input">
+                            <input type="file" asp-for="clientFile" onchange="loadFile(event)" />
+                            <img id="myImg" src="@Model.imageSrc"/>
+                        </div>
+                        <div class="login-btn">
+                            <input type="submit" value="Edit It" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        var loadFile = function(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var myImg = document.getElementById('myImg');
+                myImg.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+}

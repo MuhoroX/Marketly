@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Project.Models.Cart>
+
+@{
+	ViewData["Title"] = "Cart";
+}
+
+<section class="cart">
+	<div class="container">
+		<div class="head-cart">
+			<h2>Your Cart</h2>
+			<h2 class="overlay">Shopping Cart</h2>
+
+		</div>
+		<div class="cart-content">
+			@foreach (var item in Model)
+			{
+				<div class="card">
+					<div class="left-card">
+						<div class="image">
+							<img src="@item.Items.imageSrc" />
+						</div>
+						<div class="left-text">
+							<p class="card-name">@item.Items.Name</p>
+							<a asp-action="Product" asp-controller="Items" asp-route-Id="@item.Items.Id">view</a>
+							<p class="card-price">$@item.Items.Price</p>
+						</div>
+					</div>
+					<div class="mid-card">
+						<span>@item.Quantity</span>
+					</div>
+					<div class="right-card">
+						<a asp-action="RemoveFromCart" asp-route-id="@item.Id"><i class="fa-solid fa-trash-can"></i><p>Remove</p> </a>
+						<span class="total">$@(item.Quantity * item.Items.Price)</span>
+					</div>
+				</div>
+			}
+		</div>
+		<div class="total-price">
+			<h3>Total Price: <span>@ViewBag.Total $</span></h3>
+			<a asp-controller="Items" asp-action="HomePage" class="text-decoration-none mt-3">Back To Home</a>
+		</div>
+	</div>
+</section>

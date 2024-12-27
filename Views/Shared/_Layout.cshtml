@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Marketly</title>
+	<script type="importmap"></script>
+	<!-- Font Awesome Library-->
+	<link rel="stylesheet" href="~/css/all.min.css">
+	<!-- Render All Elements Normally -->
+	<link rel="stylesheet" href="~/css/normalize.css">
+	<!-- Web Site Icon -->
+	<link rel="icon" href="~/web-site-icon.png" type="image/x-icon">
+	<!-- Main Crud Css File -->
+	<link rel="stylesheet" href="~/css/crud_style.css">
+	<!-- Main CSS File -->
+	<link rel="stylesheet" href="~/css/style.css">
+	<!-- Swiper Slide Bar Library -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<!-- dark reader-->
+	<script src="https://cdn.jsdelivr.net/npm/darkreader/darkreader.min.js"></script>
+</head>
+<body>
+	<div class="page-wrapper">
+		<header>
+			<div class="container">
+				<div class="left-section">
+					<a href="/" class="logo" alt="logo" title="logo">
+						<h1>Marketly</h1>
+					</a>
+				</div>
+				<div class="mid-section">
+					<form asp-action="Search" asp-controller="Items" method="get">
+						<input type="text" name="query" placeholder="Write the product, category or brand you are looking for" class="search-bar">
+						<button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+					</form>
+				</div>
+				<div class="right-section">
+					<partial name="_LoginPartial" />
+					<a asp-controller="Items" asp-action="Cart">
+						<i class="fa-solid fa-cart-arrow-down"></i>
+						<p>Cart</p>
+					</a>
+					<button id="darkModeToggle" class="dark-mode-btn"><i class="fa-solid fa-moon" onclick="replaceClass()" id="myIcon"></i></button>
+					<button class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+				</div>
+				<div class="search-modal" id="searchModal">
+					<div class="search-content">
+						<form asp-action="Search" asp-controller="Items" method="get">
+							<input type="text" name="query" placeholder="Search here..." class="search-bar">
+							<button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="navigation-bar">
+			<partial name="_NavigationPartial" />
+		</div>
+		<main>
+			@RenderBody()
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="left-footer">
+					<div class="web-name">
+						<img src="~/web-site-icon.png" style="width: 45px; height: 45px" />
+						<p>Marketly<span>.</span></p>
+					</div>
+					<div class="social-media">
+						<p>Our Social Medias</p>
+						<div class="social-icons">
+							<a class="icon" href="#">
+								<i class="fa-brands fa-github fa-xl"></i>
+							</a>
+							<a class="icon" href="#">
+								<i class="fa-brands fa-skype"></i>
+							</a>
+							<a class="icon" href="#">
+								<i class="fa-brands fa-x-twitter fa-xl"></i>
+							</a>
+							<a class="icon" href="#">
+								<i class="fa-brands fa-discord fa-xl"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="right-footer">
+					<div class="drop-list">
+						<h3>Safe Shopping</h3>
+						<div class="cards-container">
+							<div class="icon">
+								<i class="fa-brands fa-cc-mastercard"></i>
+							</div>
+							<div class="icon">
+								<i class="fa-brands fa-cc-visa"></i>
+							</div>
+							<div class="icon">
+								<i class="fa-brands fa-cc-apple-pay"></i>
+							</div>
+							<div class="icon">
+								<i class="fa-brands fa-cc-paypal"></i>
+							</div>
+						</div>
+					</div>
+					<div class="drop-list">
+						<h3>Product</h3>
+						<p><a asp-action="Search" asp-controller="Items" asp-route-query="Mobiles">Mobiles</a></p>
+						<p><a asp-action="Search" asp-controller="Items" asp-route-query="Computers">Computers</a></p>
+						<p><a asp-action="Search" asp-controller="Items" asp-route-query="Laptops">Laptops</a></p>
+					</div>
+					<div class="drop-list">
+						<h3>Admin Panel</h3>
+						<p><a asp-action="Index" asp-controller="Items">Items</a></p>
+						<p><a asp-action="Create" asp-controller="Items">Add Item</a></p>
+						<p><a asp-action="HomePage" asp-controller="Items">back to up</a></p>
+					</div>
+					<div class="drop-list">
+						<h3>Legals & Contact</h3>
+						<p>Terms of Service</p>
+						<p>Privacy Policy</p>
+						<p>Refund Policy</p>
+					</div>
+				</div>
+			</div>
+			<div class="copyright">
+				<div class="container">
+					<span>
+						&copy; 2024 Marekly Inc., All rights reserved.
+					</span>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- jQuery / Bootstrap -->
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Swiper -->
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<!-- Main js File-->
+	<script src="~/js/main.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	<!-- Render Section -->
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

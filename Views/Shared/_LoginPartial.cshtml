@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<Users> signInManager;
+@inject UserManager<Users> userManager;
+
+@if (!signInManager.IsSignedIn(User))
+{
+	<a asp-controller="Account" asp-action="Login">
+		<i class="fa-regular fa-user"></i>
+		<p>Login</p>
+	</a>
+}
+else
+{
+    <div class="list-drop">
+        <a asp-controller="Items" asp-action="HomePage" class="user-name">
+            <i class="fa-regular fa-user"></i>
+            <p>@userManager.GetUserAsync(User).Result.FullName</p>
+        </a>
+        <div class="list-dropdown">
+            <a class="logout active" asp-controller="Account" asp-action="Logout">Log out</a>
+            <a class="ch-ps" asp-controller="Account" asp-action="ChangePassword" asp-route-username="@userManager.GetUserAsync(User).Result.Email">Change Password</a>
+        </div>
+    </div>
+}
